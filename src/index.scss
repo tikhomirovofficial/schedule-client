@@ -1,0 +1,77 @@
+html {
+    font-size: 10px;
+}
+.container {
+    width: 90vw;
+
+}
+.shedule {
+    height: 92vh;
+    gap: 1vh;
+}
+.header__text {
+    font-weight: 600;
+    font-size: 1.8rem;
+    line-height: 22px;
+    max-width: 256px;
+    text-transform: uppercase;
+}
+.header__thing-item {
+    padding: 1.5rem 1.7rem;
+    background: #F3F3F3;
+    border-radius: 100px;
+    gap: 12px;
+}
+.header__thing-item p {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+.emodji {
+    background: #c5c5c5;
+    width: 30px;
+    height: 30px;
+}
+.shedule__content {
+    background: #F3F3F3;
+    border-radius: 50px;
+    padding: 2% 0 2% 3%;
+    flex: 0.94;
+}
+.shedule__header {
+    padding-right: 3%;
+    box-sizing: border-box;
+    height: 40px;
+}
+.shedule__header-left, .shedule__header-right {
+    gap: 1.5vw;
+}
+.shedule__header-item {
+    padding: 1.2rem 2.0rem;
+    background: white;
+    border-radius: 10rem;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+    &-choosed {
+        background: black;
+        color: white
+    }
+}
+.shedule__header-right {
+    .shedule__header-item {
+        padding: 1.2rem 2.5rem;
+    }
+}
+.shedule__updated {
+    flex: 0.02;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    color: #BBBBBB;
+}
+@media (min-width: 2500px) {
+   html {
+       font-size: 80%;
+   }
+}
