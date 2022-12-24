@@ -1,6 +1,9 @@
 html {
     font-size: 10px;
 }
+* {
+    user-select: none;
+}
 .container {
     width: 90vw;
 
@@ -36,12 +39,12 @@ html {
     background: #F3F3F3;
     border-radius: 50px;
     padding: 2% 0 2% 3%;
-    flex: 0.94;
+    flex: 0.9;
+    gap: 1vh;
 }
 .shedule__header {
     padding-right: 3%;
     box-sizing: border-box;
-    height: 40px;
 }
 .shedule__header-left, .shedule__header-right {
     gap: 1.5vw;
@@ -56,7 +59,8 @@ html {
     font-weight: 600;
     &-choosed {
         background: black;
-        color: white
+        color: white;
+        box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.4);
     }
 }
 .shedule__header-right {
@@ -70,6 +74,68 @@ html {
     text-transform: uppercase;
     color: #BBBBBB;
 }
+.shedule__body {
+    flex: 0.95;
+}
+.shedule__body-items {
+    overflow-x: auto;
+    padding-right: 73px;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+.shedule__group {
+    min-width: 20vw;
+    background: white;
+    border-radius: 5rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 3rem;
+    text-transform: uppercase;
+    &-header {
+        background: #294C62;
+        padding: 1.6rem 0;
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+        color: white;
+
+    }
+    &-list {
+        flex: 1;
+        border-bottom-left-radius: inherit;
+        border-bottom-right-radius: inherit;
+    }
+    &-item {
+        flex: 0.125;
+
+        &:last-of-type {
+            border-bottom-left-radius: inherit;
+            border-bottom-right-radius: inherit;
+        }
+        &:nth-child(even) {
+            background: rgba(41, 76, 98, 0.04);
+        }
+        .shedule__lesson {
+            text-transform: unset;
+            &-top {
+                font-size: 1.6rem;
+                p {
+                    color: #0085FF;
+                }
+            }
+            &-teacher {
+                font-weight: 500;
+                font-size: 1.4rem;
+                text-align: center;
+                color: #DA2D32;
+            }
+            * {
+                text-transform: unset;
+            }
+        }
+    }
+}
+
 @media (min-width: 2500px) {
    html {
        font-size: 80%;
