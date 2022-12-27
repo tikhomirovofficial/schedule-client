@@ -23,6 +23,6 @@ export interface IGroup {
     couples: ICouple[]
 }
 
-export interface IShedule {
+export interface ISchedule {
     groups: IGroup[]
 }
