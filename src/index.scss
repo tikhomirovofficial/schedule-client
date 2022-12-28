@@ -11,6 +11,9 @@ html {
 .shedule {
     height: 92vh;
     gap: 1vh;
+    &__scroll-btn {
+        transform: rotateZ(-180deg);
+    }
 }
 .header__text {
     font-weight: 600;
@@ -49,6 +52,7 @@ html {
 .shedule__header-left, .shedule__header-right {
     gap: 1.5vw;
 }
+
 .shedule__header-item {
     padding: 1.2rem 2.0rem;
     background: white;
@@ -56,6 +60,7 @@ html {
     text-transform: uppercase;
     font-size: 1.5rem;
     text-align: center;
+    cursor: pointer;
     font-weight: 600;
     &-choosed {
         background: black;
@@ -67,6 +72,23 @@ html {
     .shedule__header-item {
         padding: 1.2rem 2.5rem;
     }
+}
+.schedule__scroll-next {
+    right: 0;
+    padding-right: 1vw;
+}
+.schedule__scroll-prev {
+    left: 0;
+}
+.schedule__scroll-left {
+    transform: rotateZ(-180deg);
+}
+.schedule__scroll-btn {
+    height: 73px;
+    width: 73px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.2)
 }
 .shedule__updated {
     flex: 0.02;
@@ -140,4 +162,40 @@ html {
    html {
        font-size: 80%;
    }
+}
+@media (max-width: 1761px) {
+    html {
+        font-size: 8px;
+    }
+    .header__thing-item p {
+        font-size: 1.2rem;
+    }
+    .emodji {
+        width: 25px;
+        height: 25px;
+    }
+}
+@media (max-width: 1400px) {
+    .shedule__group-item .shedule__lesson-top {
+        font-size: 1.4rem;
+    }
+    .shedule__group-header {
+        font-size: 2.5rem;
+    }
+    .schedule__scroll-btn {
+        height: 50px;
+        width: 50px;
+    }
+    .schedule__scroll-btn img {
+        height: 20px;
+    }
+    .shedule__group-item .shedule__lesson-teacher {
+        font-size: 1.2rem;
+
+    }
+    .header__text {
+        font-size: 1.4rem;
+        line-height: 16px;
+        max-width: 196px;
+    }
 }

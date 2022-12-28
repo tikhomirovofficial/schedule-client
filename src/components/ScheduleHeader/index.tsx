@@ -23,19 +23,17 @@ const ScheduleHeader: FC = () => {
         }
     ])
 
-    const [letterGroups] = useState<string[]>(['а', 'б', 'в', 'а', 'б', 'в', 'а', 'б', 'в'])
+    const [letterGroups] = useState<string[]>(['а', 'б', 'в', 'а', 'б', 'в'])
 
     const [selectedCourse, setSelectedCourse] = useState<number>(0)
     const [selectedGroup, setSelectedGroup] = useState<number>(0)
 
     const handleSelectCourse = useCallback((index: number) => {
         setSelectedCourse(index)
-        alert(index)
     }, [courses])
 
     const handleSelectGroup = useCallback((index: number) => {
         setSelectedGroup(index)
-        alert(index)
     }, [letterGroups])
 
 

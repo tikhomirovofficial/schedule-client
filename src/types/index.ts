@@ -1,3 +1,4 @@
+
 export interface ILocation {
     building: number,
     room: number

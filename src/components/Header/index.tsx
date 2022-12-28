@@ -1,6 +1,8 @@
 import React, {FC} from 'react';
+import HeaderItem from "./HeaderItem";
 
 const Header: FC = () => {
+
     return (
         <header className="flex-row-betw">
             <div className="header__logo d-f al-center gap-20">
@@ -12,22 +14,10 @@ const Header: FC = () => {
                 </p>
             </div>
             <div className="header__things d-f al-center gap-30">
-                <div className="header__thing-item d-f al-center">
-                    <div className="emodji"></div>
-                    <p>Some text</p>
-                </div>
-                <div className="header__thing-item d-f al-center">
-                    <div className="emodji"></div>
-                    <p>Some text</p>
-                </div>
-                <div className="header__thing-item d-f al-center">
-                    <div className="emodji"></div>
-                    <p>Some text</p>
-                </div>
-                <div className="header__thing-item d-f al-center">
-                    <div className="emodji"></div>
-                    <p>Some text</p>
-                </div>
+               <HeaderItem text={"n минут"}/>
+               <HeaderItem text={"СБ, 3 ДЕК"}/>
+               <HeaderItem text={"17:14"}/>
+               <HeaderItem text={"-9 С"}/>
             </div>
         </header>
     );
