@@ -10,47 +10,6 @@ import ScheduleBody from "./components/ScheduleBody";
 import {useAppDispatch, useAppSelector} from "./store/hooks";
 import {fetchSchedule, IScheduleSlice} from "./store/slices/ScheduleSlice";
 
-interface ICourse {
-    course: number
-}
-
-
-interface IScheduleContext {
-    schedule: ISchedule,
-    filter: {
-        course: number
-        groupsLetterIndex: number
-    }
-    fields: {
-        courses: ICourse[]
-        letters: string[]
-    }
-    handleSelectCourse: (index: number) => void
-    handleSelectGroup: (index: number) => void
-}
-
-
-const scheduleDefaultValue: ISchedule = {
-    groups: []
-}
-export const ScheduleContext = React.createContext<IScheduleContext>({
-    schedule: scheduleDefaultValue,
-    fields: {
-        courses: [],
-        letters: []
-    },
-    filter: {
-        course: 1,
-        groupsLetterIndex: 0
-    },
-    handleSelectCourse(index: number): void {
-    },
-    handleSelectGroup(index: number): void {
-    }
-
-})
-
-
 function App() {
 
     const dispatch = useAppDispatch()

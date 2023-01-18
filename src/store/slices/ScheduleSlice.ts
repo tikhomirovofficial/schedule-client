@@ -64,8 +64,5 @@ const scheduleSlice = createSlice({
         })
     },
 })
-
-
-fetchSchedule()
 export const {selectGroup, selectCourse} = scheduleSlice.actions
 export const scheduleReducer = scheduleSlice.reducer

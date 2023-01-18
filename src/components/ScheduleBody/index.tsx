@@ -8,7 +8,6 @@ import {useAppDispatch, useAppSelector} from "../../store/hooks";
 
 
 const ScheduleBody: FC = () => {
-    // const {schedule, filter, fields} = useContext(ScheduleContext)
     const {filter, value, details} = useAppSelector(state => state.schedule)
 
     return (
