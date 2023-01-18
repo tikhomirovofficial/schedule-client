@@ -1,12 +1,11 @@
 import React, {FC, useCallback, useContext, useEffect, useState} from 'react';
 import ScheduleHeaderItem from "./ScheduleHeaderItem";
-import {ScheduleContext} from "../../App";
+
 import {useAppDispatch, useAppSelector} from "../../store/hooks";
 import {selectCourse, selectGroup} from "../../store/slices/ScheduleSlice";
 
 
 const ScheduleHeader: FC = () => {
-    const {handleSelectCourse, handleSelectGroup, fields} = useContext(ScheduleContext)
     const dispatch = useAppDispatch()
     const {details, filter} = useAppSelector(state => state.schedule)
 
