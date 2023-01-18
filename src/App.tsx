@@ -2,32 +2,66 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {IGroup, ISchedule} from "./types";
 import useFetch from "./hooks/useFetch";
 import api from "./api";
-import SheduleApi from "./api/SheduleApi";
+import ScheduleApi from "./api/ScheduleApi";
 import {Axios, AxiosResponse} from "axios";
 import Header from "./components/Header";
 import ScheduleHeader from "./components/ScheduleHeader";
 import ScheduleBody from "./components/ScheduleBody";
+import {useAppDispatch, useAppSelector} from "./store/hooks";
+import {fetchSchedule, IScheduleSlice} from "./store/slices/ScheduleSlice";
+
+interface ICourse {
+    course: number
+}
 
 
 interface IScheduleContext {
-    schedule: ISchedule
+    schedule: ISchedule,
+    filter: {
+        course: number
+        groupsLetterIndex: number
+    }
+    fields: {
+        courses: ICourse[]
+        letters: string[]
+    }
+    handleSelectCourse: (index: number) => void
+    handleSelectGroup: (index: number) => void
 }
+
+
 const scheduleDefaultValue: ISchedule = {
     groups: []
 }
 export const ScheduleContext = React.createContext<IScheduleContext>({
-    schedule: scheduleDefaultValue
+    schedule: scheduleDefaultValue,
+    fields: {
+        courses: [],
+        letters: []
+    },
+    filter: {
+        course: 1,
+        groupsLetterIndex: 0
+    },
+    handleSelectCourse(index: number): void {
+    },
+    handleSelectGroup(index: number): void {
+    }
+
 })
 
+
 function App() {
-    const [schedule, setSchedule] = useState<ISchedule>(scheduleDefaultValue)
-    const {req, loading, error} = useFetch(async() => {
-        const res: AxiosResponse<IGroup[]> = await SheduleApi.getGroups()
-        setSchedule({
-            groups: res.data
-        })
-        console.log(res.data)
-    })
+
+    const dispatch = useAppDispatch()
+    const schedule = useAppSelector<ISchedule>(state => state.schedule.value)
+
+    useEffect(() => {
+        dispatch(fetchSchedule())
+    }, [])
+    useEffect(() => {
+        console.log('changed')
+    }, [schedule])
 
     const fRew = useRef<HTMLDivElement>({} as HTMLDivElement)
     //const references: React.MutableRefObject<HTMLDivElement>[] = []
@@ -36,19 +70,15 @@ function App() {
         ref.current.scrollIntoView({behavior: "smooth"})
     }, [])
 
-    useEffect(() => {
-        req()
-    }, [])
 
     return (
-        <ScheduleContext.Provider value={{schedule}}>
             <div className="App">
                 <div className="container ml-auto f-center-col h-100v">
                     <div className="w-100p shedule flex-col-betw">
                         <Header/>
                         <div className="shedule__content flex-col-betw">
                             <ScheduleHeader/>
-                            <ScheduleBody schedule={schedule}/>
+                            <ScheduleBody/>
                         </div>
                         <div className="shedule__updated f-center-row">
                             <p>
@@ -58,8 +88,6 @@ function App() {
                     </div>
                 </div>
             </div>
-        </ScheduleContext.Provider>
-
     );
 }
 

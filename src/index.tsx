@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.scss';
 import './styles/freedom.css'
 import App from './App';
+import {Provider} from 'react-redux'
+import {globalStore} from "./store/RootStore";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement
 );
 root.render(
-<App />
-
+    <Provider store={globalStore}>
+        <App/>
+    </Provider>
 );

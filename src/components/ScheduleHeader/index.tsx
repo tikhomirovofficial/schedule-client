@@ -1,52 +1,25 @@
-import React, {FC, useCallback, useEffect, useState} from 'react';
+import React, {FC, useCallback, useContext, useEffect, useState} from 'react';
 import ScheduleHeaderItem from "./ScheduleHeaderItem";
-
-
-interface ICourse  {
-    course: number
-}
+import {ScheduleContext} from "../../App";
+import {useAppDispatch, useAppSelector} from "../../store/hooks";
+import {selectCourse, selectGroup} from "../../store/slices/ScheduleSlice";
 
 
 const ScheduleHeader: FC = () => {
-    const [courses, setCourses] = useState<ICourse[]>([
-        {
-            course: 1,
-        },
-        {
-            course: 2,
-        },
-        {
-            course: 3,
-        },
-        {
-            course: 4
-        }
-    ])
-
-    const [letterGroups] = useState<string[]>(['а', 'б', 'в', 'а', 'б', 'в'])
-
-    const [selectedCourse, setSelectedCourse] = useState<number>(0)
-    const [selectedGroup, setSelectedGroup] = useState<number>(0)
-
-    const handleSelectCourse = useCallback((index: number) => {
-        setSelectedCourse(index)
-    }, [courses])
-
-    const handleSelectGroup = useCallback((index: number) => {
-        setSelectedGroup(index)
-    }, [letterGroups])
-
+    const {handleSelectCourse, handleSelectGroup, fields} = useContext(ScheduleContext)
+    const dispatch = useAppDispatch()
+    const {details, filter} = useAppSelector(state => state.schedule)
 
     return (
         <div className="shedule__header w-100p flex-row-betw">
             <div className="shedule__header-left d-f al-center">
-                {courses.map((item, index) => (
-                    <ScheduleHeaderItem key={Date.now() + index} indexItem={index} title={`${String(item.course)} Курс`} onSelectItem={() => handleSelectCourse(index)} isSelected={index === selectedCourse} />
+                {details.courses.map((item, index) => (
+                    <ScheduleHeaderItem key={Date.now() + index} indexItem={index} title={`${String(item)} Курс`} onSelectItem={() => dispatch(selectCourse(index))} isSelected={index === filter.curCourse} />
                 ))}
             </div>
             <div className="shedule__header-right d-f al-center">
-                {letterGroups.map((item, index) => (
-                    <ScheduleHeaderItem key={Date.now() + index} indexItem={index} title={`${item}`} onSelectItem={() => handleSelectGroup(index)} isSelected={index === selectedGroup} />
+                {details.letters.map((item, index) => (
+                    <ScheduleHeaderItem key={Date.now() + index} indexItem={index} title={`${item}`} onSelectItem={() => dispatch(selectGroup(index))} isSelected={index === filter.curGroup} />
                 ))}
             </div>
         </div>

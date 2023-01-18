@@ -8,7 +8,7 @@ const ScheduleGroup: FC<IGroup> = ({title, couples, card_color, course, seq_numb
             <div style={{backgroundColor: card_color || "gray"}} className="shedule__group-header">
                 {title}-{course}{seq_number}
             </div>
-            <ScheduleGroupList couples={couples}/>
+            <ScheduleGroupList  couples={couples}/>
         </div>
     );
 };

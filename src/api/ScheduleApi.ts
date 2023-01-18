@@ -1,12 +1,13 @@
 import instance from "./index";
 import {IGroup} from "../types";
 
-class SheduleApi {
+class ScheduleApi {
     static GROUP_PATH = '/shedule'
 
 
     static async getGroups() {
-       return await instance.get<IGroup[]>(this.GROUP_PATH)
+        return await instance.get<IGroup[]>(this.GROUP_PATH)
     }
 }
-export default SheduleApi
+export default  ScheduleApi;
+//
