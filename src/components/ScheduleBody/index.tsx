@@ -3,7 +3,6 @@ import ScrollButton from "../ScrollButton";
 import {ScrollDirection} from "../../types/enums";
 import {ISchedule} from "../../types";
 import ScheduleGroup from "../ScheduleGroup";
-import {ScheduleContext} from "../../App";
 import {useAppDispatch, useAppSelector} from "../../store/hooks";
 
 
